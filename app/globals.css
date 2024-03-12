@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --form-control-color: #0073dd;
+  --blue: #0073dd;
+  --primary_30: #600c20;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+}
+
+h1,
+p,
+li {
+  font-family: var(--font-sourcesans3);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.form-control {
+  color: var(--primary_30);
+  font-size: 1.25rem;
+  font-weight: 600;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+  align-items: baseline;
+}
+
+.form-control + .form-control {
+  margin-top: 1em;
+}
+
+.form-control:focus-within {
+  color: var(--form-control-color);
+}
+
+input[type="radio"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  /* Remove most all native input styles */
+  appearance: none;
+  /* For iOS < 15 */
+  background-color: var(--form-background);
+  /* Not removed via appearance */
+  margin: 0;
+  font: inherit;
+  color: var(--blue);
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--blue);
+  border-radius: 50%;
+  transform: translateY(-0.075em);
+
+  display: grid;
+  place-content: center;
+}
+
+input[type="radio"]::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+}
+
+input[type="radio"]:checked::before,
+input[type="radio"]:hover::before {
+  transform: scale(1);
+}
+
+input[type="radio"]:focus::after {
+  content: "";
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  position: absolute;
+  border: 2px solid var(--blue);
+  top: -4px;
+  left: -4px;
+}
+
+input[type="radio"]:hover {
+  cursor: pointer;
+}
