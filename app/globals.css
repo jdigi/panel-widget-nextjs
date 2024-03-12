@@ -103,3 +103,29 @@ input[type="radio"]:focus::after {
 input[type="radio"]:hover {
   cursor: pointer;
 }
+
+/* asset loader */
+.skeleton {
+  overflow: hidden;
+  height: 0;
+  padding-top: 100%;
+}
+.animate {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 80%
+    ),
+    lightgray;
+  background-size: 500px 100%;
+}
+@keyframes shimmer {
+  0% {
+    background-position: -500px 0;
+  }
+  100% {
+    background-position: 500px 0;
+  }
+}
