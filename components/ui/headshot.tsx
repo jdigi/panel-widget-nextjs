@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 // TODO: properly TYPE all the props
@@ -9,13 +9,11 @@ export default function HeadShot({
   alt,
   width,
   height,
-  className,
 }: {
   data: any;
   alt: string;
   width: number;
   height: number;
-  className?: string;
 }) {
   const [reveal, setReveal] = useState(false);
   const visibility = reveal ? "visible" : "hidden";
@@ -26,7 +24,6 @@ export default function HeadShot({
       className={`overflow-hidden flex flex-col items-center justify-center`}
       style={{
         width: `${width}px`,
-        // height: `${height}px`,
         position: "relative",
       }}
     >

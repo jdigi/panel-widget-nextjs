@@ -30,7 +30,7 @@ export default function CourseWrapper({
         </p>
       </section>
       <section className="course-schedule col-span-3 flex flex-col gap-y-6">
-        <h2 className="text-heading-sm font-base">Register for This Course</h2>
+        <h2 className="text-title-lg font-semibold">Course Dates</h2>
         <Suspense fallback={<div>Loading...</div>}>
           {data.map((item: any, index: number) => (
             <CourseCard key={index} data={item} />

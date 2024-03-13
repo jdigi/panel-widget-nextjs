@@ -16,7 +16,7 @@ const config: Config = {
       primary_60: "#ED0000",
     },
     fontSize: {
-      "title-lg": "3rem",
+      "title-lg": "2.125rem",
       "title-sm": "1.875rem",
       "heading-md": "1.5rem",
       "heading-sm": "1.25rem",

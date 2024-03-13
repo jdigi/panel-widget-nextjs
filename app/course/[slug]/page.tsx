@@ -19,7 +19,7 @@ async function getCourseData(slug: string) {
       throw new Error(`HTTP error! Status: ${res.status}`);
     }
     const data = await res.json();
-    console.log("DATA: ", data);
+    // console.log("DATA: ", data);
     return data;
   } catch (error) {
     console.error("Fetch error:", error);
