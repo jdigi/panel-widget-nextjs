@@ -1,5 +1,6 @@
 "use client";
 import PanelWidget from "./panel";
+import Link from "next/link";
 
 export default function CourseWrapper({
   data,
@@ -17,7 +18,7 @@ export default function CourseWrapper({
         <h2 className="text-heading-md mb-3">
           Subheading about course goes here
         </h2>
-        <p className="text-body-md">
+        <p className="text-body-md mb-4">
           lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -25,6 +26,12 @@ export default function CourseWrapper({
           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
           pariatur.
         </p>
+        <Link
+          href="/"
+          className="text-base text-blue_50 hover:underline transition-all"
+        >
+          Go to Home Page
+        </Link>
       </section>
       <PanelWidget data={data} courseId={slug} />
     </main>
