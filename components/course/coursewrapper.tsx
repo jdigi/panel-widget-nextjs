@@ -1,42 +1,32 @@
 "use client";
-import { Suspense, useEffect, useState } from "react";
-import CourseCard from "../card/course";
+import PanelWidget from "./panel";
 
 export default function CourseWrapper({
   data,
   slug,
 }: {
   data: any;
-  slug: any;
+  slug: string;
 }) {
-  // useEffect(() => {
-  //   console.log("DATA Yo: ", data);
-  // }, [data]);
-
   return (
-    <main className="relative max-w-screen-xl mx-auto grid grid-cols-7 py-24 gap-x-16">
-      <section className="course-details col-span-4">
-        <h1 className="text-title-lg text-primary_20 font-semibold mb-8">
-          UX Basic Training
+    <main className="px-4 py-12 relative max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-7 md:py-24 gap-x-16 gap-y-6">
+      <section className="course-details md:col-span-4">
+        <h1 className="text-title-lg text-primary_20 font-semibold mb-4">
+          Course Title Goes Here
         </h1>
-        <h2 className="text-heading-md mb-6">
-          Foundational concepts that everyone should know
+        <h2 className="text-heading-md mb-3">
+          Subheading about course goes here
         </h2>
         <p className="text-body-md">
-          User experience (UX) is a powerful philosophy that includes processes
-          for delivering digital products that delight users while achieving a
-          business or organization’s goals. However, UX can be a challenging and
-          difficult topic to learn on your own.
+          lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur.
         </p>
       </section>
-      <section className="course-schedule col-span-3 flex flex-col gap-y-6">
-        <h2 className="text-title-lg font-semibold">Course Dates</h2>
-        <Suspense fallback={<div>Loading...</div>}>
-          {data.map((item: any, index: number) => (
-            <CourseCard key={index} data={item} />
-          ))}
-        </Suspense>
-      </section>
+      <PanelWidget data={data} courseId={slug} />
     </main>
   );
 }

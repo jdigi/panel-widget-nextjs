@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Source_Sans_3 } from "next/font/google";
+import { ModalProvider } from "../hooks/useModal";
+import GlobalModal from "../components/modal/globalmodal";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -23,7 +25,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${sourcesans3.variable}`}>
-      <body className={sourcesans3.className}>{children}</body>
+      <body className={sourcesans3.className}>
+        <ModalProvider>
+          <GlobalModal />
+          {children}
+          <GlobalModal />
+        </ModalProvider>
+      </body>
     </html>
   );
 }

@@ -2,7 +2,13 @@
 import { useEffect, useState } from "react";
 import HeadShot from "../../ui/headshot";
 
-export default function CourseCard({ data }: { data: any }) {
+export default function CourseCard({
+  data,
+  change,
+}: {
+  data: any;
+  change: any;
+}) {
   const [isTwoDays, setIsTwoDays] = useState(false);
   const [courseTimeStart, setCourseTimeStart] = useState("");
   const [courseTimeEnd, setCourseTimeEnd] = useState("");
@@ -12,6 +18,13 @@ export default function CourseCard({ data }: { data: any }) {
   const [dayTwoDate, setDayTwoDate] = useState("");
   const [dayOneWithMonth, setDayOneWithMonth] = useState("");
   const [validUntilDate, setValidUntilDate] = useState("");
+  const [courseClassId, setCourseClassId] = useState(0);
+
+  // callback to lift state (course/class ID) up to parent component
+  const handleClassId = () => {
+    setCourseClassId(data?.id);
+    change(data?.id);
+  };
 
   // TODO: add better typing
   const convertTimestamp = (timestamp: number, option: any) => {
@@ -56,12 +69,12 @@ export default function CourseCard({ data }: { data: any }) {
 
       // check dates array length for multiple days
       if (arr.length > 1) {
-        // convert day one dates and time
+        // convert day-one dates and time
         const dayOneArr: any = arr[0];
         const dayOneDay = convertTimestamp(dayOneArr[0], optionsWeekday);
         const dayOneMonth = convertTimestamp(dayOneArr[0], optionsMonthDate);
         const dayOneTimeStart = convertTimestamp(dayOneArr[0], optionsTime);
-        // convert day two dates and time
+        // convert day-two dates and time
         const dayTwoArr: any = arr[1];
         const dayTwoDay = convertTimestamp(dayTwoArr[0], optionsWeekday);
         const dayTwoDate = convertTimestamp(dayTwoArr[0], optionsDate);
@@ -75,7 +88,7 @@ export default function CourseCard({ data }: { data: any }) {
         setDayTwoDate(dayTwoDate);
         setIsTwoDays(true);
       } else {
-        // convert day one dates and time
+        // convert day-one dates and time
         const dayOneArr: any = arr[0];
         const dayOneWithMonth = convertTimestamp(
           dayOneArr[0],
@@ -102,20 +115,26 @@ export default function CourseCard({ data }: { data: any }) {
   }, [data]);
 
   return (
-    <div className="grid grid-cols-4 py-8 px-6 rounded-lg border border-neutral_80 border-2 max-w-[29.5rem]">
+    <div className="grid grid-cols-4 py-6 px-4 md:py-8 md:px-6 rounded-lg border border-neutral_80 border-2 hover:border-primary_20 hover:shadow-[0_0_0_2px_#4D0001] focus:shadow-[0_0_0_2px_#0073DD] focus:border-blue_50 transition-all min-h-[15rem]">
       <header className="col-span-4">
         <label className="form-control">
-          <input type="radio" name="radio" />
+          <input
+            type="radio"
+            name="radio"
+            onChange={() => {
+              handleClassId();
+            }}
+          />
           Virtual Course
         </label>
       </header>
       <div className="col-span-3 pl-6">
-        <h2 className="text-title-sm leading-[38px] font-bold">
+        <h2 className="text-heading-md xl:text-title-sm leading-[28px] md:leading-[38px] font-bold">
           {isTwoDays
             ? `${dayOneDay} & ${dayTwoDay}, ${dayOneMonth} & ${dayTwoDate}`
             : `${dayOneWithMonth}`}
         </h2>
-        <h3 className="text-title-sm font-normal">
+        <h3 className="text-heading-md xl:text-title-sm font-normal">
           {courseTimeStart} - {courseTimeEnd}
         </h3>
         <p className="text-body-md mb-6">
@@ -129,7 +148,7 @@ export default function CourseCard({ data }: { data: any }) {
           Until {validUntilDate}
         </p>
       </div>
-      <div className="col-span-1">
+      <div className="col-span-1 justify-self-end">
         <HeadShot
           data={data?.instructors[0]}
           width={80}

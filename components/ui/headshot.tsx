@@ -37,8 +37,8 @@ export default function HeadShot({
         onLoad={() => setReveal(true)}
         className="rounded-full mb-2"
       />
-      <div className="text-body-md">Instructor:</div>
-      <div className="text-body-md">{data?.first_name}</div>
+      <div className="text-[0.95rem] md:text-body-md">Instructor:</div>
+      <div className="text-[0.95rem] md:text-body-md">{data?.first_name}</div>
       <span
         className="skeleton animate w-full h-full"
         style={{

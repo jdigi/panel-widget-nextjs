@@ -4,7 +4,7 @@ export async function fetchPublic(
   body = null,
   cache = true
 ) {
-  const url = `${process.env.NEXT_PUBLIC_API}${endpoint}`;
+  const url = endpoint;
   const options = {
     method,
     headers: {
