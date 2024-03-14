@@ -45,6 +45,7 @@ export default function PanelWidget({
     openModal(<MessageModal message={msg} header={genericMsg} />);
   };
 
+  // TODO: move all bookmark logic to a custom hook
   const bookmarkHandler = () => {
     // TODO: implement this function once API is ready
     // check if course is saved

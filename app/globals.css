@@ -121,3 +121,7 @@ input[type="radio"]:hover {
     background-position: 500px 0;
   }
 }
+
+.test-change {
+  color: red;
+}
